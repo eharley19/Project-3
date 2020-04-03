@@ -19,6 +19,7 @@
   "homepage": "https://github.com/eharley19/Project-3#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.9.7"
+    "mongoose": "^5.9.7",
+    "mongoose-type-email": "^1.0.12"
   }
 }
