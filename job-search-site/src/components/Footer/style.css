@@ -1,0 +1,19 @@
+.has-background-cyan {
+    background-color: rgb(157, 173, 247);
+    height: 50px;
+}
+
+.footer-copyright {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 16px;
+}
+
+a {
+    color: black;
+}
+a:hover {
+    text-decoration: none;
+    color: #668B8B;
+}
