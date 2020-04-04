@@ -1,14 +1,9 @@
 .has-background-cyan {
-    background-color: rgb(157, 173, 247);
+    background-color: rgb(211, 211, 211);
     height: 50px;
 }
 
-.footer-copyright {
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-    font-size: 14px;
-    padding-top: 16px;
-}
+
 
 a {
     color: black;

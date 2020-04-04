@@ -9,15 +9,25 @@ class Search extends Component {
   state = {
     jobs: [],
     q: "",
-    message: "Simply search for jobs via the Jobs Search"
+    message: "Search for Jobs Above"
   };
 
-  handleInputChange = event => {
+  handleInputChangeJob = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
+
+  handleInputChangeLocation = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+
+ 
 
   getJobs = () => {
     API.getJobs(this.state.q)
@@ -48,6 +58,7 @@ class Search extends Component {
     const job = this.state.jobs.find(job => job.id === id);
 
     API.saveJob({
+      //HUAN/EDD ENTER CORRECT SCHEMA HERE
       adzunaId: job.id,
       title: job.volumeInfo.title,
       location: job.volumeInfo.location,
@@ -72,13 +83,14 @@ class Search extends Component {
               </div>
               <div className="order-sm-1 p-2 bd-highlight">
                 <h1 className="heading-title mx-sm-3 mb-2">
-                  Jobs Search
+                 
                 </h1>
                 <h2 className="heading-subtitle mx-sm-3 mb-2">
-                  Search for and Save Jobs of Interest
+                  Search for Covid Related Jobs
                 </h2>
                 <SearchForm
-                  handleInputChange={this.handleInputChange}
+                  handleInputChangeJob={this.handleInputChangeJob}
+                  handleInputChangeLocation={this.handleInputChangeLocation}
                   handleFormSubmit={this.handleFormSubmit}
                   q={this.state.q}
                 />
@@ -94,6 +106,7 @@ class Search extends Component {
               <List>
                 {this.state.jobs.map(job => (
                   <Job
+                  //HUAN/EDD ENTER CORRECT SCHEMA HERE
                   key={job.id}
                   title={job.volumeInfo.title}
                   location={job.volumeInfo.location}

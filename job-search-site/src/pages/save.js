@@ -65,6 +65,7 @@ class Saved extends Component {
               <List>
                 {this.state.jobs.map(book => (
                   <Job
+                  //HUAN/EDD ENTER CORRECT SCHEMA HERE
                     key={book._id}
                     title={book.title}
                     location={book.location}
