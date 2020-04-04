@@ -1,7 +1,7 @@
 const path = require("path");
 const router = require("express").Router();
-const jobsRoutes = require("./jobs");
-const adzunaRoutes = require("./adzuna");
+const jobsRoutes = require("./jobsRoutes");
+const adzunaRoutes = require("./adzunaRoutes");
 
 
 router.use("/saved-jobs", jobsRoutes);
