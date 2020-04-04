@@ -41,8 +41,8 @@ const UserSchema = new mongoose.Schema({
       startDate: { type: Date, required: true },
       endDate: { type: Date, default: "Current Job" }
     }
-  ],
-  savedJobs: [{ jobId }]
+  ]
+  // savedJobs: [{ jobId }]
 });
 
 const User = mongoose.model("User", UserSchema);
