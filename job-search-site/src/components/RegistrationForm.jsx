@@ -76,9 +76,7 @@ const validationSchema = Yup.object().shape({
   phone: Yup.string()
     .matches(phoneRegExp, "*Phone number is not valid")
     .required("*Phone number required"),
-  blog: Yup.string()
-    .url("*Must enter URL in http://www.example.com format")
-    .required("*URL required"),
+
 });
 
 const RegistrationForm = () => {
@@ -155,21 +153,7 @@ const RegistrationForm = () => {
                   <div className="error-message">{errors.phone}</div>
                 ) : null}
               </Form.Group>
-              <Form.Group controlId="formBlog">
-                <Form.Label>Blog :</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="blog"
-                  placeholder="Blog URL"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.blog}
-                  className={touched.blog && errors.blog ? "has-error" : null}
-                />
-                {touched.blog && errors.blog ? (
-                  <div className="error-message">{errors.blog}</div>
-                ) : null}
-              </Form.Group>
+
               {/*Submit button that is disabled after button is clicked/form is in the process of submitting*/}
               <BUTTON variant="primary" type="submit" disabled={isSubmitting}>
                 Submit
