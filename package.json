@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/eharley19/Project-3#readme",
   "dependencies": {
+    "@sentry/node": "^5.15.4",
     "axios": "^0.19.2",
     "concurrently": "^5.1.0",
     "dotenv": "^8.2.0",
@@ -34,6 +35,8 @@
     "mongoose": "^5.9.7",
     "mongoose-type-email": "^1.0.12",
     "nodemon": "^2.0.2",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "react-router-dom": "^5.1.2",
+    "react-toastify": "^5.5.0"
   }
 }
