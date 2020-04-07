@@ -1,0 +1,14 @@
+.has-background-cyan {
+    background-color: rgb(211, 211, 211);
+    height: 50px;
+}
+
+
+
+a {
+    color: black;
+}
+a:hover {
+    text-decoration: none;
+    color: #668B8B;
+}
