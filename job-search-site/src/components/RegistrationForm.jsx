@@ -8,6 +8,7 @@ import * as Yup from "yup";
 
 
 const phoneRegExp = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
+const pswdRegExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
 
 const validationSchema = Yup.object().shape({
@@ -17,17 +18,15 @@ const validationSchema = Yup.object().shape({
     .max(12, "*Usernames can't be longer than 12 characters")
     .required("*Username is required"),
   password: Yup.string()
-    .min(8, "*Password is too short. Minimum of 8 characters")
-    .max(12, "*Password cannot exceed 12 characters.")
-    .required("*Password is required"),
-  firstname: Yup.string()
+    .required("*Password is required")
+    .matches(
+      pswdRegExp,
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+    ),
+  name: Yup.string()
     .min(2, "*Names must have at least 2 characters")
     .max(100, "*Names can't be longer than 100 characters")
-    .required("*First name is required"),
-  lastname: Yup.string()
-    .min(2, "*Names must have at least 2 characters")
-    .max(100, "*Names can't be longer than 100 characters")
-    .required("*Last name is required"),
+    .required("*Name is required"),
   email: Yup.string()
     .email("*Must be a valid email address")
     .max(100, "*Email must be less than 100 characters")
@@ -46,7 +45,7 @@ const RegistrationForm = () => {
       </Modal.Header>
       <Modal.Body>
         <Formik
-          initialValues={{ username: "", password: "", firstname: "", lastname: "", email: "", phone: ""}}
+          initialValues={{ username: "", password: "", name: "", email: "", phone: ""}}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
@@ -67,34 +66,49 @@ const RegistrationForm = () => {
               isSubmitting,
             }) => (
             <Form onSubmit={handleSubmit} className="mx-auto">
-              <Form.Group controlId="formFirstName">
-                <Form.Label>First Name :</Form.Label>
+              <Form.Group controlId="formUserName">
+                <Form.Label>Username :</Form.Label>
                 <Form.Control
                   type="text"
-                  name="firstname"
-                  placeholder="First Name"
+                  name="username"
+                  placeholder="Username"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.firstname}
-                  className={touched.firstname && errors.firstname ? "has-error" : null}
+                  value={values.username}
+                  className={touched.username && errors.username ? "has-error" : null}
                 />
-                {touched.firstname && errors.firstname ? (
-                  <div className="error-message">{errors.firstname}</div>
+                {touched.username && errors.username ? (
+                  <div className="error-message">{errors.username}</div>
                 ) : null}
               </Form.Group>
-              <Form.Group controlId="formLastName">
-                <Form.Label>Last Name :</Form.Label>
+              <Form.Group controlId="formPassword">
+                <Form.Label>Password :</Form.Label>
                 <Form.Control
-                  type="text"
-                  name="lastname"
-                  placeholder="Last Name"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.lastname}
-                  className={touched.lastname && errors.lastname ? "has-error" : null}
+                  value={values.password}
+                  className={touched.password && errors.password ? "has-error" : null}
                 />
-                {touched.lastname && errors.lastname ? (
-                  <div className="error-message">{errors.lastname}</div>
+                {touched.password && errors.password ? (
+                  <div className="error-message">{errors.password}</div>
+                ) : null}
+              </Form.Group>
+              <Form.Group controlId="formName">
+                <Form.Label>Name :</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.name}
+                  className={touched.name && errors.name ? "has-error" : null}
+                />
+                {touched.name && errors.name ? (
+                  <div className="error-message">{errors.name}</div>
                 ) : null}
               </Form.Group>
               <Form.Group controlId="formEmail">
