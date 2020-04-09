@@ -37,9 +37,9 @@ const validationSchema = Yup.object().shape({
 
 });
 
-const RegistrationForm = () => {
+const RegistrationForm = (props) => {
   return (
-    <Modal show={true} >
+    <Modal show={props.modalOpen} onHide={props.handleModalOpen}>
       <Modal.Header closeButton>
         <Modal.Title>Registration Form</Modal.Title>
       </Modal.Header>
@@ -143,7 +143,7 @@ const RegistrationForm = () => {
               </Form.Group>
 
               {/*Submit button that is disabled after button is clicked/form is in the process of submitting*/}
-              <Button variant="primary" type="submit" disabled={isSubmitting}>
+              <Button variant="primary" type="submit" disabled={isSubmitting} onClick={props.handleModalOpen}>
                 Submit
               </Button>
             </Form>
