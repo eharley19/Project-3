@@ -6,7 +6,7 @@ const NavBar = () => {
     <React.Fragment>
       <nav className="navbar navbar-expand-lg navbar-light">
         <Link className="navbar-brand brand-titles" to="#">
-        Workers4Covid
+          Workers4Covid
         </Link>
         <button
           className="navbar-toggler"
@@ -37,12 +37,12 @@ const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <NavLink className="nav-link heading-titles" to="/search">
+              <NavLink className="nav-link heading-titles" to="/login">
                 Login
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link heading-titles" to="/saved">
+              <NavLink className="nav-link heading-titles" to="/register">
                 Register
               </NavLink>
             </li>
