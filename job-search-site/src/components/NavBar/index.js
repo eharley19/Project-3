@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import RegistrationForm from "../RegistrationForm";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 
 class NavBar extends Component {
   state = {
-    modalOpen: false
- }
+    modalOpen: false,
+  };
 
- handleModalOpen = () => {
+  handleModalOpen = () => {
     this.setState((prevState) => {
-       return{
-          modalOpen: !prevState.modalOpen
-       }
-    })
- }
+      return {
+        modalOpen: !prevState.modalOpen,
+      };
+    });
+  };
   render() {
     return (
       <React.Fragment>
         <nav className="navbar navbar-expand-lg navbar-light">
           <Link className="navbar-brand brand-titles" to="#">
             Workers4Covid
-        </Link>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -39,12 +39,12 @@ class NavBar extends Component {
               <li className="nav-item">
                 <NavLink className="nav-link heading-titles" to="/search">
                   SEARCH
-              </NavLink>
+                </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link heading-titles" to="/saved">
                   SAVED
-              </NavLink>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -54,7 +54,7 @@ class NavBar extends Component {
               <li className="nav-item">
                 <NavLink className="nav-link heading-titles" to="/search">
                   Login
-              </NavLink>
+                </NavLink>
               </li>
               <li className="nav-item">
                 <a onClick={this.handleModalOpen} className="nav-link">
@@ -69,8 +69,8 @@ class NavBar extends Component {
           handleModalOpen={this.handleModalOpen}
         />
       </React.Fragment>
-    )
+    );
   }
-};
+}
 
 export default NavBar;

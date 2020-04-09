@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const jobdbController = require("../../controllers/adzunaController");
+const adzunaController = require("../../controllers/adzunaController");
 
-// router.route("/").get(jobdbController.findAll);
+router.route("/").get(adzunaController.findAll);
 
 module.exports = router;
