@@ -8,54 +8,52 @@ import API from "../utils/API";
 class Search extends Component {
   state = {
     jobs: [],
-    q: "",
-    message: "Search for Jobs Above"
+    where: "",
+    what: "",
+    message: "Search for Jobs Above",
   };
 
-  handleInputChangeJob = event => {
+  handleInputChangeJob = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
   };
 
-  handleInputChangeLocation = event => {
+  handleInputChangeLocation = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
   };
-
-
- 
 
   getJobs = () => {
-    API.getJobs(this.state.q)
-      .then(res =>
+    API.getJobs(this.state.what, this.state.where)
+      .then((res) => {
         this.setState({
           jobs: res.data,
-          currentPage: 1
-        })
-      )
+          currentPage: 1,
+        });
+      })
       .catch(() => {
         toast.error("Your search did not match any job results");
 
         this.setState({
           jobs: [],
           message: "Your search did not match any job results",
-          currentPage: 1
+          currentPage: 1,
         });
       });
   };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
     toast.info("Searching jobs... !");
     this.getJobs();
   };
 
-  handleJobSave = id => {
-    const job = this.state.jobs.find(job => job.id === id);
+  handleJobSave = (id) => {
+    const job = this.state.jobs.find((job) => job.id === id);
 
     API.saveJob({
       //HUAN/EDD ENTER CORRECT SCHEMA HERE
@@ -64,7 +62,7 @@ class Search extends Component {
       location: job.volumeInfo.location,
       link: job.volumeInfo.infoLink,
       description: job.volumeInfo.description,
-      image: job.volumeInfo.imageLinks.thumbnail
+      image: job.volumeInfo.imageLinks.thumbnail,
     }).then(() => this.getJobs());
   };
 
@@ -82,9 +80,7 @@ class Search extends Component {
                 />
               </div>
               <div className="order-sm-1 p-2 bd-highlight">
-                <h1 className="heading-title mx-sm-3 mb-2">
-                 
-                </h1>
+                <h1 className="heading-title mx-sm-3 mb-2"></h1>
                 <h2 className="heading-subtitle mx-sm-3 mb-2">
                   Search for Covid Related Jobs
                 </h2>
@@ -92,7 +88,8 @@ class Search extends Component {
                   handleInputChangeJob={this.handleInputChangeJob}
                   handleInputChangeLocation={this.handleInputChangeLocation}
                   handleFormSubmit={this.handleFormSubmit}
-                  q={this.state.q}
+                  where={this.state.where}
+                  what={this.state.what}
                 />
               </div>
             </div>
@@ -104,15 +101,15 @@ class Search extends Component {
 
             {this.state.jobs.length ? (
               <List>
-                {this.state.jobs.map(job => (
+                {this.state.jobs.map((job) => (
                   <Job
-                  //HUAN/EDD ENTER CORRECT SCHEMA HERE
-                  key={job.id}
-                  title={job.volumeInfo.title}
-                  location={job.volumeInfo.location}
-                  link={job.volumeInfo.infoLink}
-                  description={job.volumeInfo.description}
-                  image={job.volumeInfo.imageLinks.thumbnail}
+                    key={job.id}
+                    title={job.title}
+                    link={job.redirect_url}
+                    company={job.company.display_name}
+                    contract_time={job.contract_time}
+                    location={job.location.display_name}
+                    description={job.description}
                     Button={() => (
                       <button
                         onClick={() => this.handleJobSave(job.id)}

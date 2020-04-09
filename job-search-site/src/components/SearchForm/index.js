@@ -1,7 +1,13 @@
 import React from "react";
 import "./style.css";
 
-function SearchForm({ b, handleInputChangeLocation, q, handleInputChangeJob, handleFormSubmit }) {
+function SearchForm({
+  handleInputChangeLocation,
+  where,
+  what,
+  handleInputChangeJob,
+  handleFormSubmit,
+}) {
   return (
     <form className="form-inline">
       <div className="form-group mx-sm-3">
@@ -12,9 +18,9 @@ function SearchForm({ b, handleInputChangeLocation, q, handleInputChangeJob, han
           className="form-control heading-subtitle"
           id="Title"
           type="text"
-          value={q}
+          value={what}
           placeholder="Job Title..."
-          name="q"
+          name="what"
           onChange={handleInputChangeJob}
           size="55"
           required
@@ -28,9 +34,9 @@ function SearchForm({ b, handleInputChangeLocation, q, handleInputChangeJob, han
           className="form-control heading-subtitle"
           id="Title"
           type="text"
-          value={b}
+          value={where}
           placeholder="Location..."
-          name="b"
+          name="where"
           onChange={handleInputChangeLocation}
           size="55"
           required
