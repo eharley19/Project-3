@@ -1,14 +1,13 @@
 const axios = require("axios");
-// const db = require("../models");
-
+require("dotenv").config();
+const keys = require("../keys");
 module.exports = {
   findAll: function (req, res) {
     const params = {
       where: req.query.where,
       what: req.query.what,
     };
-    const adzunaURL = `https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=54a82cb9&app_key=f7f63d6d48e6d7266572736fb858dc10&results_per_page=5`;
-
+    const adzunaURL = `https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=${keys.adzunaId}&app_key=${keys.adzunaKey}&results_per_page=5`;
     axios
       .get(adzunaURL, {
         params,
