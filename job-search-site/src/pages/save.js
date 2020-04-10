@@ -61,17 +61,17 @@ class Saved extends Component {
         </div>
         <div className="row">
           <div className="col-8 col-centered card-content">
-            {/* {this.state.jobs.length ? (
+            {this.state.jobs.length ? (
               <List>
                 {this.state.jobs.map(book => (
                   <Job
                   //HUAN/EDD ENTER CORRECT SCHEMA HERE
-                    key={book._id}
-                    title={book.title}
-                    location={book.location}
-                    link={book.link}
-                    description={book.description}
-                    image={book.image}
+                    key={job._id}
+                    title={job.title}
+                    location={job.location}
+                    link={job.link}
+                    description={job.description}
+                    image={job.image}
                     Button={() => (
                       <button
                         onClick={() => this.handleJobDelete(book._id)}
@@ -89,7 +89,7 @@ class Saved extends Component {
                   No saved jobs in your Library
                 </h2>
               </div>
-            )} */}
+            )}
           </div>
         </div>
       </div>
