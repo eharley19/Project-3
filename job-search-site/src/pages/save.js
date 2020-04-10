@@ -61,7 +61,7 @@ class Saved extends Component {
         </div>
         <div className="row">
           <div className="col-8 col-centered card-content">
-            {this.state.jobs.length ? (
+            {/* {this.state.jobs.length ? (
               <List>
                 {this.state.jobs.map(book => (
                   <Job
@@ -89,7 +89,7 @@ class Saved extends Component {
                   No saved jobs in your Library
                 </h2>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>
