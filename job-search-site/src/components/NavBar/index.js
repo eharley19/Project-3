@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import RegistrationForm from "../RegistrationForm";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
+import LoginModal from "../LoginModal";
 
 class NavBar extends Component {
   state = {
@@ -13,6 +14,14 @@ class NavBar extends Component {
     this.setState((prevState) => {
       return {
         modalOpen: !prevState.modalOpen,
+      };
+    });
+  };
+
+  handleModal2Open = () => {
+    this.setState((prevState) => {
+      return {
+        modal2Open: !prevState.modal2Open,
       };
     });
   };
@@ -52,9 +61,9 @@ class NavBar extends Component {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink className="nav-link heading-titles" to="/search">
+                <a onClick={this.handleModal2Open} className="nav-link">
                   Login
-                </NavLink>
+                </a>
               </li>
               <li className="nav-item">
                 <a onClick={this.handleModalOpen} className="nav-link">
@@ -67,6 +76,10 @@ class NavBar extends Component {
         <RegistrationForm
           modalOpen={this.state.modalOpen}
           handleModalOpen={this.handleModalOpen}
+        />
+        <LoginModal
+          modalOpen={this.state.modal2Open}
+          handleModal2Open={this.handleModal2Open}
         />
       </React.Fragment>
     );
