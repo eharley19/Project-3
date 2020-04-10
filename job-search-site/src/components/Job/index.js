@@ -11,25 +11,16 @@ const Job = ({
   link,
   Button,
 }) => {
-  const truncateText = (str, length, ending) => {
-    if (str) {
-      if (length == null) {
-        length = 100;
-      }
-      if (ending == null) {
-        ending = "...";
-      }
-      if (str.length > length) {
-        return str.substring(0, length - ending.length) + ending;
-      } else {
-        return str;
-      }
+  const refinedText = (str) => {
+    while (str.indexOf("<") !== -1) {
+      str = str.replace("<strong>", "");
+      str = str.replace("</strong>", "");
     }
     return str;
   };
 
-  const truncateDescription = truncateText(description, 255, "...");
-
+  const refinedDescription = refinedText(description);
+  const refinedTitle = refinedText(title);
   return (
     <ListItem>
       <div className="media-snippet">
@@ -38,10 +29,10 @@ const Job = ({
             <h1 className="heading-title">{company}</h1>
           </div>
           <div className="media-content">
-            <h3 className="heading-title">{title}</h3>
+            <h3 className="heading-title">{refinedTitle}</h3>
             {location && <h5 className="heading-location">{location}</h5>}
             <h6>{contract_time}</h6>
-            <p className="p-article">{description}</p>
+            <p className="p-article">{refinedDescription}</p>
             <div className="d-flex flex-row bd-highlight mb-3">
               <div className="p-2 bd-highlight">
                 <a
@@ -50,7 +41,7 @@ const Job = ({
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  More Details
+                  MORE DETAILS
                 </a>
               </div>
               <div className="p-2 bd-highlight">
