@@ -15,11 +15,11 @@ module.exports = {
       // .then((response) => {
       //   response.data.results.filter(
       //     (result) => result.id
-      // result.contract_time &&
-      // result.company.display_name &&
-      // result.description &&
-      // result.title &&
-      // result.location.display_name;
+      //     // result.contract_time &&
+      //     // result.company.display_name &&
+      //     // result.description &&
+      //     // result.title &&
+      //     // result.location.display_name;
       //   );
       // })
       .then((response) => res.json(response.data.results))
