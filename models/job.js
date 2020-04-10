@@ -11,6 +11,6 @@ const jobSchema = new Schema({
   adzunaId: { type: String, required: true, unique: true }
 });
 
-const Job = mongoose.model("Job", bookSchema);
+const Job = mongoose.model("Job", jobSchema);
 
-module.exports = Book;
+module.exports = Job;

@@ -63,7 +63,7 @@ class Saved extends Component {
           <div className="col-8 col-centered card-content">
             {this.state.jobs.length ? (
               <List>
-                {this.state.jobs.map(book => (
+                {this.state.jobs.map(job => (
                   <Job
                   //HUAN/EDD ENTER CORRECT SCHEMA HERE
                     key={job._id}
@@ -74,7 +74,7 @@ class Saved extends Component {
                     image={job.image}
                     Button={() => (
                       <button
-                        onClick={() => this.handleJobDelete(book._id)}
+                        onClick={() => this.handleJobDelete(job._id)}
                         className="btn delete-button heading-subtitle ml-2"
                       >
                         Delete
