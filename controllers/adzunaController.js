@@ -7,7 +7,7 @@ module.exports = {
       where: req.query.where,
       what: req.query.what,
     };
-    const adzunaURL = `https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=${keys.adzunaId}&app_key=${keys.adzunaKey}&results_per_page=5`;
+    const adzunaURL = `https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=${keys.adzunaId}&app_key=${keys.adzunaKey}&results_per_page=50`;
     axios
       .get(adzunaURL, {
         params,

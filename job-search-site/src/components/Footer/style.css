@@ -1,12 +1,12 @@
 .has-background-cyan {
-    background-color: rgb(211, 211, 211);
+    background-color: rgb(23, 22, 66);
     height: 50px;
 }
 
 
 
 a {
-    color: black;
+    color: rgb(0, 0, 0);
 }
 a:hover {
     text-decoration: none;
