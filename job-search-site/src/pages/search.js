@@ -4,7 +4,7 @@ import Job from "../components/Job/index";
 import SearchForm from "../components/SearchForm/index";
 import { List } from "../components/List/index";
 import API from "../utils/API";
-import { withRouter } from "react-router-dom";
+
 
 class Search extends Component {
   state = {
