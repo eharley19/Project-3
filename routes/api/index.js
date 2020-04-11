@@ -6,11 +6,7 @@ const jobsRoutes = require("./jobsRoutes");
 const adzunaRoutes = require("./adzunaRoutes");
 
 router.use("/users", userRoutes);
-// router.use("/saved-jobs", jobsRoutes);
+router.use("/jobs", jobsRoutes);
 router.use("/adzuna", adzunaRoutes);
-
-router.use(function (req, res) {
-  res.sendFile(path.join(__dirname, "../../job-search-site/public/index.html"));
-});
 
 module.exports = router;

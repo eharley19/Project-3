@@ -54,15 +54,14 @@ class Search extends Component {
 
   handleJobSave = (id) => {
     const job = this.state.jobs.find((job) => job.id === id);
-
+    console.log("PAGE/SEARCH.JS:handleJobSaved" + JSON.stringify(job));
     API.saveJob({
-      //HUAN/EDD ENTER CORRECT SCHEMA HERE
       adzunaId: job.id,
-      title: job.volumeInfo.title,
-      location: job.volumeInfo.location,
-      link: job.volumeInfo.infoLink,
-      description: job.volumeInfo.description,
-      image: job.volumeInfo.imageLinks.thumbnail,
+      title: job.title,
+      location: job.location.display_name,
+      link: job.redirect_url,
+      description: job.description,
+      company: job.company.display_name,
     }).then(() => this.getJobs());
   };
 
