@@ -12,10 +12,10 @@ export default {
   },
   // Deletes the saved job with the given id
   deleteJob: function (id) {
-    return http.delete("/api//jobs/" + id);
+    return http.delete("/api/jobs/" + id);
   },
   // Saves a job to the database
-  saveJob: function (bookData) {
-    return http.post("/api//jobs", bookData);
+  saveJob: function (jobData) {
+    return http.post("/api/jobs", jobData);
   },
 };
