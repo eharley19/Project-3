@@ -13,9 +13,8 @@ class Saved extends Component {
     this.getJobs();
   }
 
-
   getJobs = () => {
-    API.getJobs(this.state.what, this.state.where)
+    API.getSavedJobs()
       .then((res) => {
         this.setState({
           jobs: res.data,
@@ -51,21 +50,21 @@ class Saved extends Component {
         <div className="row">
           <div className="col-8 col-centered">
             <div className="d-flex flex-row bd-highlight mb-3 justify-content-center align-items-center">
-              <div className="p-2 bd-highlight">
+              <div className="p-2 bd-highlight" style={{marginTop:30}}>
                 <img
                   className="image-250"
-                  src="/images/jobs.jpg"
+                  src="/images/joblogo.jpg"
                   alt="Jobs Search"
                 />
               </div>
-              <div className="p-2 bd-highlight">
-                <h1 className="heading-title mx-sm-3 mb-2">Job Search</h1>
-
+              
+                <div className="p-2 bd-highlight" style={{marginTop:10}}>
                 <h2 className="heading-subtitle mx-sm-3 mb-2 text-center">
                   Showing {count} jobs in your Library
                 </h2>
+                </div>
               </div>
-            </div>
+            
           </div>
         </div>
         <div className="row">
@@ -74,15 +73,15 @@ class Saved extends Component {
               <List>
                 {this.state.jobs.map((job) => (
                   <Job
-                    key={job.id}
+                    key={job._id}
                     title={job.title}
                     location={job.location.display_name}
                     link={job.redirect_url}
                     description={job.description}
-                    company={job.display_name}
+                    company={job.company.display_name}
                     Button={() => (
                       <button
-                        onClick={() => this.handleJobDelete(job.id)}
+                        onClick={() => this.handleJobDelete(job._id)}
                         className="btn delete-button heading-subtitle ml-2"
                       >
                         Delete
