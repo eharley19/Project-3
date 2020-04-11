@@ -4,10 +4,12 @@ const Schema = mongoose.Schema;
 const jobSchema = new Schema({
   title: { type: String, required: true },
   location: { type: String },
-  link: { type: String, required: true },
-  description: { type: String, required: true },
-  company: { type: String, required: true },
-  adzunaId: { type: String, required: true, unique: true }
+  contract_time: { type: String },
+  link: { type: String },
+  description: { type: String },
+  company: { type: String },
+  adzunaId: { type: String },
+  uid: { type: String },
 });
 
 const Job = mongoose.model("Job", jobSchema);

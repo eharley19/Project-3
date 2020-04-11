@@ -13,9 +13,8 @@ class Saved extends Component {
     this.getJobs();
   }
 
-
   getJobs = () => {
-    API.getJobs(this.state.what, this.state.where)
+    API.getSavedJobs()
       .then((res) => {
         this.setState({
           jobs: res.data,
@@ -79,7 +78,7 @@ class Saved extends Component {
                     location={job.location.display_name}
                     link={job.redirect_url}
                     description={job.description}
-                    company={job.display_name}
+                    company={job.company.display_name}
                     Button={() => (
                       <button
                         onClick={() => this.handleJobDelete(job._id)}
