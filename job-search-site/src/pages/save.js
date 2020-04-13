@@ -73,15 +73,16 @@ class Saved extends Component {
               <List>
                 {this.state.jobs.map((job) => (
                   <Job
-                    key={job.id}
+                    key={job._id}
                     title={job.title}
-                    location={job.location.display_name}
                     link={job.redirect_url}
+                    company={job.company}
+                    contract_time={job.contract_time}
+                    location={job.location}
                     description={job.description}
-                    company={job.company.display_name}
                     Button={() => (
                       <button
-                        onClick={() => this.handleJobDelete(job.id)}
+                        onClick={() => this.handleJobDelete(job._id)}
                         className="btn delete-button heading-subtitle ml-2"
                       >
                         Delete
