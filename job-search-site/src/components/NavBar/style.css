@@ -1,6 +1,7 @@
 .navbar-light {
-  background-color:rgb(211, 211, 211);
-  height: 34px;
+  background-color:rgb(23, 22, 66);
+  color: white;
+  height: 44px;
   line-height: 34px;
   letter-spacing: 0.1em;
 }
@@ -8,14 +9,19 @@
 .brand-titles {
   /* font-family: 'Raleway', sans-serif; */
   font-family: 'Montserrat', sans-serif;
+  color: rgb(247, 247, 247);
+ 
+  font-weight:bold;
+  
   
 }
 
 .heading-titles {
   /* font-family: 'Raleway', sans-serif; */
   font-family: 'Montserrat', sans-serif;
+  color: rgb(255, 255, 255) !important;
   
 }
 .heading-titles:hover {
-  color: black;
+  color: rgb(255, 255, 255);
 }

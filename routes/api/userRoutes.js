@@ -52,7 +52,7 @@ router.post("/login", (req, res) => {
         if (result) {
           const token = jwt.sign(
             {
-              name: user[0].name,
+              
               user_id: user[0]._id,
             },
             process.env.JWT_KEY,

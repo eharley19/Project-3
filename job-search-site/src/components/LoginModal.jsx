@@ -1,6 +1,15 @@
 import React from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 import { Formik } from "formik";
+import http from '../services/httpService';
+
+
+const loginUser = (json, completion) => {
+  http.post('/api/login', json, {}).then(response => {
+    console.log(response);
+    completion();
+  });
+}
 
 
 const LoginModal = (props) => {
@@ -15,6 +24,10 @@ const LoginModal = (props) => {
           
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
+            loginUser(JSON.stringify(values, null, 2), () => {
+              console.log("Submitted successfully");
+              props.handleModal2Open();
+            });
             setTimeout(() => {
               alert(JSON.stringify(values, null, 2));
               resetForm();
@@ -65,7 +78,7 @@ const LoginModal = (props) => {
               
 
               {/*Submit button that is disabled after button is clicked/form is in the process of submitting*/}
-              <Button variant="primary" type="submit" disabled={isSubmitting} onClick={props.handleModal2Open}>
+              <Button variant="primary" type="submit" disabled={isSubmitting}>
                 Submit
               </Button>
             </Form>

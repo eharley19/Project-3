@@ -37,11 +37,11 @@ const Job = ({
               <div className="p-2 bd-highlight">
                 <a
                   href={link}
-                  className="btn view-button heading-location ml-2"
+                  className="btn p-2 view-button heading-subtitle ml-2" style={{marginLeft: 20}}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  MORE DETAILS
+                  APPLY
                 </a>
               </div>
               <div className="p-2 bd-highlight">

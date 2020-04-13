@@ -50,21 +50,21 @@ class Saved extends Component {
         <div className="row">
           <div className="col-8 col-centered">
             <div className="d-flex flex-row bd-highlight mb-3 justify-content-center align-items-center">
-              <div className="p-2 bd-highlight">
+              <div className="p-2 bd-highlight" style={{marginTop:30}}>
                 <img
                   className="image-250"
-                  src="/images/jobs.jpg"
+                  src="/images/joblogo.jpg"
                   alt="Jobs Search"
                 />
               </div>
-              <div className="p-2 bd-highlight">
-                <h1 className="heading-title mx-sm-3 mb-2">Job Search</h1>
-
+              
+                <div className="p-2 bd-highlight" style={{marginTop:10}}>
                 <h2 className="heading-subtitle mx-sm-3 mb-2 text-center">
                   Showing {count} jobs in your Library
                 </h2>
+                </div>
               </div>
-            </div>
+            
           </div>
         </div>
         <div className="row">
