@@ -54,7 +54,7 @@ const RegistrationForm = (props) => {
       <Modal.Body>
         <Formik
           initialValues={{ username: "", password: "", name: "", email: "", phone: ""}}
-          validationSchema={validationSchema}
+          // validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
             register(JSON.stringify(values, null, 2), () => {
