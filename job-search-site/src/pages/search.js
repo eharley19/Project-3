@@ -55,7 +55,6 @@ class Search extends Component {
 
   handleJobSave = (id) => {
     const job = this.state.jobs.find((job) => job.id === id);
-    console.log("PAGE/SEARCH.JS:handleJobSaved" + JSON.stringify(job));
     API.saveJob({
       adzunaId: job.id,
       title: job.title,
