@@ -2,7 +2,7 @@ const db = require("../models");
 
 module.exports = {
   findAll: function (req, res) {
-    db.Job.find(req.query)
+    db.Job.find()
       .then((dbJob) => res.json(dbJob))
       .catch((err) => res.status(422).json(err));
   },
