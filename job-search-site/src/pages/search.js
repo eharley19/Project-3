@@ -5,6 +5,9 @@ import SearchForm from "../components/SearchForm/index";
 import { List } from "../components/List/index";
 import API from "../utils/API";
 
+import "./style.css";
+
+
 class Search extends Component {
   state = {
     jobs: [],
@@ -91,12 +94,19 @@ class Search extends Component {
                 <h1 className="heading-title mx-sm-3 mb-2"></h1>
                 <h2
                   className="heading-title mx-sm-7 mb-7"
+
+                  className="mx-auto"
+
                   class="mx-auto"
+
                   style={{
                     width: 500,
                     marginBottom: 35,
                     marginTop: 25,
+
+
                     color: "rgb(22, 17, 70)",
+
                   }}
                 >
                   Search and Help Fight COVID-19
@@ -113,7 +123,10 @@ class Search extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-10 col-centered card-content mb-4">
+          <div
+            className="col-10 col-centered card-content mb-4"
+            style={{ backgroundColor: "rgb(22, 17, 70)" }}
+          >
             <h1 className="heading-title mx-sm-3 mb-2 text-center">Results</h1>
 
             {this.state.jobs.length ? (

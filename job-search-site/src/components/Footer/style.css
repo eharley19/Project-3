@@ -1,14 +1,16 @@
 .has-background-cyan {
-    background-color: rgb(23, 22, 66);
-    height: 50px;
+  background-color: rgb(23, 22, 66);
+  height: 50px;
 }
 
-
+footer {
+  isolation: isolate;
+}
 
 a {
-    color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
 }
 a:hover {
-    text-decoration: none;
-    color: #668B8B;
+  text-decoration: none;
+  color: #668b8b;
 }
