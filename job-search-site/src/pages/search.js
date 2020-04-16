@@ -4,7 +4,9 @@ import Job from "../components/Job/index";
 import SearchForm from "../components/SearchForm/index";
 import { List } from "../components/List/index";
 import API from "../utils/API";
+
 import "./style.css";
+
 
 class Search extends Component {
   state = {
@@ -55,14 +57,21 @@ class Search extends Component {
 
   handleJobSave = (id) => {
     const job = this.state.jobs.find((job) => job.id === id);
-    API.saveJob({
-      adzunaId: job.id,
-      title: job.title,
-      location: job.location.display_name,
-      link: job.redirect_url,
-      description: job.description,
-      company: job.company.display_name,
-    }).then(() => this.getJobs());
+    API.getSavedJobs().then((res) => {
+      const savedJobs = res.data;
+      if (savedJobs.find((jobSaved) => jobSaved.adzunaId === id)) {
+        alert("Job already Saved!");
+      } else {
+        API.saveJob({
+          adzunaId: job.id,
+          title: job.title,
+          location: job.location.display_name,
+          link: job.redirect_url,
+          description: job.description,
+          company: job.company.display_name,
+        }).then(() => this.getJobs());
+      }
+    });
   };
 
   render() {
@@ -85,11 +94,19 @@ class Search extends Component {
                 <h1 className="heading-title mx-sm-3 mb-2"></h1>
                 <h2
                   className="heading-title mx-sm-7 mb-7"
+
                   className="mx-auto"
+
+                  class="mx-auto"
+
                   style={{
                     width: 500,
                     marginBottom: 35,
                     marginTop: 25,
+
+
+                    color: "rgb(22, 17, 70)",
+
                   }}
                 >
                   Search and Help Fight COVID-19
