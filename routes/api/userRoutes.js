@@ -42,13 +42,12 @@ router.post("/signup", (req, res) => {
     });
 });
 router.post("/login", (req, res) => {
-  User.findOne({ username: req.body.username })
-    .exec()
-    .then((user) => {
+  User.findOne({ username: req.body.data.username })
+      .then((user) => {
       if (!user) {
         return res.status(401).json({ message: "Authorization Failed" });
       }
-      bcrypt.compare(req.body.password, user.password, (err, result) => {
+      bcrypt.compare(req.body.data.password, user.password, (err, result) => {
         if (err) {
           return res.status(401).json({ message: "Authorization Failed" });
         }
