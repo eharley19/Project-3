@@ -1,5 +1,5 @@
 .navbar-light {
-  background-color:rgb(23, 22, 66);
+  background-color: rgb(23, 22, 66);
   color: white;
   height: 44px;
   line-height: 34px;
@@ -8,20 +8,36 @@
 
 .brand-titles {
   /* font-family: 'Raleway', sans-serif; */
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: rgb(247, 247, 247);
- 
-  font-weight:bold;
-  
-  
+  font-weight: bold;
+}
+
+.brand-titles:hover {
+  color: #2f4f4f;
 }
 
 .heading-titles {
   /* font-family: 'Raleway', sans-serif; */
-  font-family: 'Montserrat', sans-serif;
-  color: rgb(255, 255, 255) !important;
-  
+  font-family: "Montserrat", sans-serif;
+  color: rgb(208, 203, 139) !important;
 }
 .heading-titles:hover {
-  color: rgb(255, 255, 255);
+  color: #2f4f4f !important;
+}
+
+span.navbar-toggler-icon {
+  background-color: #fff;
+}
+
+.darkmode--activated a.brand-titles {
+  color: rgb(208, 203, 139) !important;
+}
+.darkmode--activated span.navbar-toggler-icon {
+  background-color: rgb(208, 203, 139);
+}
+
+.darkmode--activated a.brand-titles:hover,
+.darkmode--activated a.nav-link.heading-titles:hover {
+  color: #2f4f4f !important;
 }
