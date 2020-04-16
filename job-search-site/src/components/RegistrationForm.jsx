@@ -39,7 +39,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const register = (json, completion) => {
-  http.post('/api/signup', json, {}).then(response => {
+  http.post('/api/users/signup', json, {}).then(response => {
     console.log(response);
     completion();
   });
@@ -54,18 +54,19 @@ const RegistrationForm = (props) => {
       <Modal.Body>
         <Formik
           initialValues={{ username: "", password: "", name: "", email: "", phone: ""}}
-          // validationSchema={validationSchema}
+          validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
-            register(JSON.stringify(values, null, 2), () => {
+            register((values, null, 2), () => {
+              
               console.log("Submitted successfully");
               props.handleModalOpen();
             });
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              resetForm();
-              setSubmitting(false);
-            }, 500);
+            // setTimeout(() => {
+            //   alert(JSON.stringify(values, null, 2));
+            //   resetForm();
+            //   setSubmitting(false);
+            // }, 500);
           }}
         >
           {({
