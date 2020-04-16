@@ -5,7 +5,7 @@ import http from '../services/httpService';
 
 
 const loginUser = (json, completion) => {
-  http.post('/api/login', json, {}).then(response => {
+  http.post('/api/users/login', json, {}).then(response => {
     console.log(response);
     completion();
   });
@@ -24,15 +24,15 @@ const LoginModal = (props) => {
           
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
-            loginUser(JSON.stringify(values, null, 2), () => {
+            loginUser((values, null, 2), () => {
               console.log("Submitted successfully");
               props.handleModal2Open();
             });
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              resetForm();
-              setSubmitting(false);
-            }, 500);
+            // setTimeout(() => {
+            //   alert(JSON.stringify(values, null, 2));
+            //   resetForm();
+            //   setSubmitting(false);
+            // }, 500);
           }}
         >
           {({
