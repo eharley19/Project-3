@@ -62,11 +62,11 @@ const RegistrationForm = (props) => {
               console.log("Submitted successfully");
               props.handleModalOpen();
             });
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              resetForm();
-              setSubmitting(false);
-            }, 500);
+            // setTimeout(() => {
+            //   alert(JSON.stringify(values, null, 2));
+            //   resetForm();
+            //   setSubmitting(false);
+            // }, 500);
           }}
         >
           {({

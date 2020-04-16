@@ -24,7 +24,7 @@ const LoginModal = (props) => {
           
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
-            loginUser(JSON(values, null, 2), () => {
+            loginUser((values, null, 2), () => {
               console.log("Submitted successfully");
               props.handleModal2Open();
             });
