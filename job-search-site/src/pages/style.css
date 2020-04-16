@@ -29,6 +29,11 @@ h1.heading-title.mb-2,
   background-color: rgb(22, 17, 70);
 }
 
+div.Toastify__toast {
+  background-color: rgb(208, 203, 139);
+  color: rgb(22, 17, 70);
+}
+
 .darkmode--activated div.modal-title,
 .darkmode--activated label.form-label {
   color: rgb(208, 203, 139);
@@ -37,6 +42,10 @@ h1.heading-title.mb-2,
 .darkmode--activated button.btn.btn-primary {
   background-color: rgb(208, 203, 139);
   color: rgb(22, 17, 70);
+}
+
+button.btn.btn-primary {
+  background-color: rgb(22, 17, 70);
 }
 
 nav.navbar {
