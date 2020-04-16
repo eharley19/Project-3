@@ -5,7 +5,6 @@ import SearchForm from "../components/SearchForm/index";
 import { List } from "../components/List/index";
 import API from "../utils/API";
 
-
 class Search extends Component {
   state = {
     jobs: [],
@@ -55,14 +54,21 @@ class Search extends Component {
 
   handleJobSave = (id) => {
     const job = this.state.jobs.find((job) => job.id === id);
-    API.saveJob({
-      adzunaId: job.id,
-      title: job.title,
-      location: job.location.display_name,
-      link: job.redirect_url,
-      description: job.description,
-      company: job.company.display_name,
-    }).then(() => this.getJobs());
+    API.getSavedJobs().then((res) => {
+      const savedJobs = res.data;
+      if (savedJobs.find((jobSaved) => jobSaved.adzunaId === id)) {
+        alert("Job already Saved!");
+      } else {
+        API.saveJob({
+          adzunaId: job.id,
+          title: job.title,
+          location: job.location.display_name,
+          link: job.redirect_url,
+          description: job.description,
+          company: job.company.display_name,
+        }).then(() => this.getJobs());
+      }
+    });
   };
 
   render() {
@@ -71,7 +77,10 @@ class Search extends Component {
         <div className="row">
           <div className="col-10 col-centered">
             <div className="d-flex flex-wrap flex-row bd-highlight mb-3 justify-content-center align-items-center">
-              <div className="order-sm-2 p-2 bd-highlight" style={{marginBottom: 35, marginTop: -15}}>
+              <div
+                className="order-sm-2 p-2 bd-highlight"
+                style={{ marginBottom: 35, marginTop: -15 }}
+              >
                 <img
                   className="image-250"
                   src="/images/JOBLOGO.jpg"
@@ -80,8 +89,17 @@ class Search extends Component {
               </div>
               <div className="order-sm-1 p-2 bd-highlight">
                 <h1 className="heading-title mx-sm-3 mb-2"></h1>
-                <h2 className="heading-title mx-sm-7 mb-7" class="mx-auto" style={{width:500, marginBottom: 35, marginTop: 25, color: "rgb(22, 17, 70)" }}>
-                Search and Help Fight COVID-19
+                <h2
+                  className="heading-title mx-sm-7 mb-7"
+                  class="mx-auto"
+                  style={{
+                    width: 500,
+                    marginBottom: 35,
+                    marginTop: 25,
+                    color: "rgb(22, 17, 70)",
+                  }}
+                >
+                  Search and Help Fight COVID-19
                 </h2>
                 <SearchForm
                   handleInputChangeJob={this.handleInputChangeJob}
