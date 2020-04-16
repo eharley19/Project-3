@@ -6,22 +6,25 @@ const jwt = require("jsonwebtoken");
 const User = require("../../models/User");
 
 router.post("/signup", (req, res) => {
-  User.find({ username: req.body.username })
+  const requestBody = req.body.data;
+  User.findOne({ username: requestBody.username })
     .exec()
     .then((user) => {
+      
       if (user) {
-        return res.status(409).json({ message: "Username exists" });
+        return res.status(409).json({ message: user });
       } else {
-        bcrypt.hash(req.body.password, 10, (err, hash) => {
+        bcrypt.hash(requestBody.password, 10, (err, hash) => {
           if (err) {
-            return res.status(500).json({ error: err });
+            return res.status(500).json({ message: requestBody});
           } else {
             const user = new User({
               _id: new mongoose.Types.ObjectId(),
-              username: req.body.username,
+              username: requestBody.username,
               password: hash,
-              email: req.body.email,
-              phoneNum: req.body.phoneNum,
+              name: requestBody.name,
+              email: requestBody.email,
+              phoneNum: requestBody.phoneNum,
             });
             user
               .save()
@@ -31,7 +34,7 @@ router.post("/signup", (req, res) => {
               })
               .catch((err) => {
                 console.log(err);
-                res.status(500).json({ error: err });
+                res.status(500).json({origin: "saved" });
               });
           }
         });
@@ -42,10 +45,10 @@ router.post("/login", (req, res) => {
   User.findOne({ username: req.body.username })
     .exec()
     .then((user) => {
-      if (user) {
+      if (!user) {
         return res.status(401).json({ message: "Authorization Failed" });
       }
-      bcrypt.compare(req.body.password, user[0].password, (err, result) => {
+      bcrypt.compare(req.body.password, user.password, (err, result) => {
         if (err) {
           return res.status(401).json({ message: "Authorization Failed" });
         }
@@ -53,7 +56,7 @@ router.post("/login", (req, res) => {
           const token = jwt.sign(
             {
               
-              user_id: user[0]._id,
+              user_id: user._id,
             },
             process.env.JWT_KEY,
             {

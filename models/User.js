@@ -16,7 +16,8 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 8,
-    maxlength: 12,
+    maxlength: 64,
+    
   },
   name: { type: String, required: true },
   email: {
@@ -34,7 +35,7 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
 
-  // savedJobs: [{ jobId }]
+  
 });
 
 const User = mongoose.model("User", UserSchema);
