@@ -46,7 +46,8 @@ function SearchForm({
       <button
         onClick={handleFormSubmit}
         type="submit"
-        className="mx-sm-3 btn- btn-lg search-button heading-subtitle" style={{width: 150, marginTop: 15}}
+        className="mx-sm-3 btn- btn-lg search-button heading-subtitle"
+        style={{ width: 150, marginTop: 15 }}
       >
         Search
       </button>

@@ -29,7 +29,7 @@ class NavBar extends Component {
     return (
       <React.Fragment>
         <nav className="navbar navbar-expand-lg navbar-light">
-          <Link style={{width:375}} className=" brand-titles" to="#">
+          <Link style={{ width: 375 }} className="brand-titles" to="/">
             COVID WARRIORS
           </Link>
           <button
@@ -43,33 +43,41 @@ class NavBar extends Component {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div style={{width:335}} className="collapse navbar-collapse" id="navbarNav">
+          <div
+            style={{ width: 335 }}
+            className="collapse navbar-collapse"
+            id="navbarNav"
+          >
             <ul className="navbar-nav">
               <li className="nav-item">
                 <NavLink className="nav-link heading-titles" to="/search">
                   Jobs
                 </NavLink>
               </li>
-              
-              <li  className="nav-item">
+
+              <li className="nav-item">
                 <NavLink className="nav-link heading-titles" to="/saved">
                   Saved
                 </NavLink>
               </li>
-          
             </ul>
-           
           </div>
 
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a onClick={this.handleModal2Open} className="nav-link heading-titles">
+                <a
+                  onClick={this.handleModal2Open}
+                  className="nav-link heading-titles"
+                >
                   Login
                 </a>
               </li>
               <li className="nav-item">
-                <a onClick={this.handleModalOpen} className="nav-link heading-titles">
+                <a
+                  onClick={this.handleModalOpen}
+                  className="nav-link heading-titles"
+                >
                   Register
                 </a>
               </li>
