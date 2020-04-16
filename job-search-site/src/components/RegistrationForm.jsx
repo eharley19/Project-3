@@ -3,6 +3,7 @@ import React from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import http from "../services/httpService";
 
 
 
@@ -37,6 +38,13 @@ const validationSchema = Yup.object().shape({
 
 });
 
+const register = (json, completion) => {
+  http.post('/api/users/signup', json, {}).then(response => {
+    console.log(response);
+    completion();
+  });
+}
+
 const RegistrationForm = (props) => {
   return (
     <Modal show={props.modalOpen} onHide={props.handleModalOpen}>
@@ -49,11 +57,16 @@ const RegistrationForm = (props) => {
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              resetForm();
-              setSubmitting(false);
-            }, 500);
+            register((values, null, 2), () => {
+              
+              console.log("Submitted successfully");
+              props.handleModalOpen();
+            });
+            // setTimeout(() => {
+            //   alert(JSON.stringify(values, null, 2));
+            //   resetForm();
+            //   setSubmitting(false);
+            // }, 500);
           }}
         >
           {({
@@ -143,7 +156,7 @@ const RegistrationForm = (props) => {
               </Form.Group>
 
               {/*Submit button that is disabled after button is clicked/form is in the process of submitting*/}
-              <Button variant="primary" type="submit" disabled={isSubmitting} onClick={props.handleModalOpen}>
+              <Button variant="primary" type="submit" disabled={isSubmitting}>
                 Submit
               </Button>
             </Form>

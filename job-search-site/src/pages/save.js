@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { List } from "../components/List/index";
 import Job from "../components/Job/index";
 import API from "../utils/API";
+import "./style.css";
 
 class Saved extends Component {
   state = {
@@ -50,35 +51,38 @@ class Saved extends Component {
         <div className="row">
           <div className="col-8 col-centered">
             <div className="d-flex flex-row bd-highlight mb-3 justify-content-center align-items-center">
-              <div className="p-2 bd-highlight" style={{marginTop:30}}>
+              <div className="p-2 bd-highlight" style={{ marginTop: 30 }}>
                 <img
                   className="image-250"
                   src="/images/joblogo.jpg"
                   alt="Jobs Search"
                 />
               </div>
-              
-                <div className="p-2 bd-highlight" style={{marginTop:10}}>
+
+              <div className="p-2 bd-highlight" style={{ marginTop: 10 }}>
                 <h2 className="heading-subtitle mx-sm-3 mb-2 text-center">
                   Showing {count} jobs in your Library
                 </h2>
-                </div>
               </div>
-            
+            </div>
           </div>
         </div>
         <div className="row">
-          <div className="col-8 col-centered card-content">
+          <div
+            className="col-8 col-centered card-content"
+            style={{ backgroundColor: "rgb(22, 17, 70)" }}
+          >
             {this.state.jobs.length ? (
               <List>
                 {this.state.jobs.map((job) => (
                   <Job
                     key={job._id}
                     title={job.title}
-                    location={job.location.display_name}
                     link={job.redirect_url}
+                    company={job.company}
+                    contract_time={job.contract_time}
+                    location={job.location}
                     description={job.description}
-                    company={job.company.display_name}
                     Button={() => (
                       <button
                         onClick={() => this.handleJobDelete(job._id)}
