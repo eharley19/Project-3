@@ -13,9 +13,8 @@ class Profile extends Component {
   }
 
   onChangeHandler = (event) => {
-    console.log(event.target.files[0]);
     var files = event.target.files[0];
-    if (this.checkMimeType(event)) {
+    if (this.checkMimeType(event) && this.checkFileSize(event)) {
       // if return true allow to setState
       this.setState({
         selectedFile: files,
@@ -26,7 +25,6 @@ class Profile extends Component {
   onClickHandler = () => {
     const data = new FormData();
     data.append("file", this.state.selectedFile);
-    console.log(this.state.selectedFile);
     axios
       .post("http://localhost:3001/upload", data, {
         // receive two parameter endpoint url ,form data
@@ -71,9 +69,27 @@ class Profile extends Component {
       event.target.value = null; // discard selected file
 
       //  create toast massage
-      event.target.value = null;
+
       toast.error(err);
 
+      return false;
+    }
+
+    return true;
+  };
+
+  checkFileSize = (event) => {
+    let files = event.target.files;
+    let size = 1050000;
+    let err = "";
+    console.log("File size is", files[0].size);
+    if (files[0].size > size) {
+      err += files[0].type + "is too large, please pick a smaller file\n";
+    }
+
+    if (err !== "") {
+      event.target.value = null;
+      toast.error(err);
       return false;
     }
 
@@ -101,7 +117,7 @@ class Profile extends Component {
                 <label className="profile-label">Upload Your File </label>
                 <small id="uploadHelp" class="form-text text-muted">
                   Please submit your resume as a Word document, a PDF file or a
-                  TXT file .
+                  TXT file under 1MB.
                 </small>
                 <input
                   type="file"
