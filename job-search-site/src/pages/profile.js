@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Progress } from "reactstrap";
 import { toast } from "react-toastify";
 
 class Profile extends Component {
@@ -26,12 +27,20 @@ class Profile extends Component {
     axios
       .post("http://localhost:3001/upload", data, {
         // receive two parameter endpoint url ,form data
+        onUploadProgress: (ProgressEvent) => {
+          this.setState({
+            loaded: (ProgressEvent.loaded / ProgressEvent.total) * 100,
+          });
+        },
       })
       .then((res) => {
         // then print response status
-        if (res.statusText === "OK") {
-          alert("File is uploaded successfully");
-        }
+      })
+      .then((res) => {
+        toast.success("upload success");
+      })
+      .catch((err) => {
+        toast.error("upload fail");
       });
   };
 
@@ -57,6 +66,11 @@ class Profile extends Component {
                 />
               </div>
             </form>
+            <div class="form-group">
+              <Progress max="100" color="success" value={this.state.loaded}>
+                {Math.round(this.state.loaded, 2)}%
+              </Progress>
+            </div>
             <button
               type="button"
               className="btn btn-success btn-block"
