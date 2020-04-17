@@ -14,10 +14,13 @@ class Profile extends Component {
 
   onChangeHandler = (event) => {
     console.log(event.target.files[0]);
-    this.setState({
-      selectedFile: event.target.files[0],
-      loaded: 0,
-    });
+    var files = event.target.files[0];
+    if (this.checkMimeType(event)) {
+      // if return true allow to setState
+      this.setState({
+        selectedFile: files,
+      });
+    }
   };
 
   onClickHandler = () => {
@@ -44,6 +47,39 @@ class Profile extends Component {
       });
   };
 
+  checkMimeType = (event) => {
+    //getting file object
+    let files = event.target.files;
+    //define message container
+    let err = "";
+    // list allow mime type
+    const types = [
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "text/plain",
+    ];
+
+    // compare file type find doesn't matach
+    if (types.every((type) => files[0].type !== type)) {
+      // create error message and assign to container
+      err += files[0].type + " is not a supported format\n";
+    }
+
+    if (err !== "") {
+      // if message not same old that mean has error
+      event.target.value = null; // discard selected file
+
+      //  create toast massage
+      event.target.value = null;
+      toast.error(err);
+
+      return false;
+    }
+
+    return true;
+  };
+
   render() {
     return (
       <div className="container">
@@ -57,12 +93,16 @@ class Profile extends Component {
             <h5 className="profile-content">Your Resume:</h5>
           </div>
           <div className="col-9">
-            {this.state.selectedFile && this.state.loaded > 0 && (
+            {this.state.selectedFile && this.state.loaded === 100 && (
               <h6>{this.state.selectedFile.name}</h6>
             )}
             <form method="post" action="#" id="#">
               <div className="form-group files">
                 <label className="profile-label">Upload Your File </label>
+                <small id="uploadHelp" class="form-text text-muted">
+                  Please submit your resume as a Word document, a PDF file or a
+                  TXT file .
+                </small>
                 <input
                   type="file"
                   className="form-control"
@@ -72,7 +112,12 @@ class Profile extends Component {
               </div>
             </form>
             <div class="form-group">
-              <Progress max="100" color="info" value={this.state.loaded}>
+              <Progress
+                animated
+                max="100"
+                color="info"
+                value={this.state.loaded}
+              >
                 {Math.round(this.state.loaded, 2)}%
               </Progress>
             </div>
