@@ -6,16 +6,17 @@ const jwt = require("jsonwebtoken");
 const User = require("../../models/User");
 
 router.post("/signup", (req, res) => {
+  console.log(req.body);
   const requestBody = req.body.data;
   User.findOne({ username: requestBody.username })
-    .exec()
-    .then((user) => {
-      
+      .then((user) => {
+      console.log(user);
       if (user) {
         return res.status(409).json({ message: user });
       } else {
         bcrypt.hash(requestBody.password, 10, (err, hash) => {
           if (err) {
+            
             return res.status(500).json({ message: requestBody});
           } else {
             const user = new User({
