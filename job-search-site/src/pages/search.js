@@ -93,7 +93,7 @@ class Search extends Component {
                 <h1 className="heading-title mx-sm-3 mb-2"></h1>
                 <h2
                   className="heading-title mx-sm-7 mb-7"
-                  className="mx-auto"
+                  class="mx-auto"
                   style={{
                     width: 500,
                     marginBottom: 35,

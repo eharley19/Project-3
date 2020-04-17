@@ -48,16 +48,21 @@ class Profile extends Component {
     return (
       <div className="container">
         <div className="row">
-          <h1>Profile</h1>
+          <div className="col-12">
+            <h2 className="profile-title">Profile</h2>
+          </div>
         </div>
         <div className="row">
           <div className="col-3">
-            <h5>Your Resume:</h5>
+            <h5 className="profile-content">Your Resume:</h5>
           </div>
           <div className="col-9">
+            {this.state.selectedFile && this.state.loaded > 0 && (
+              <h6>{this.state.selectedFile.name}</h6>
+            )}
             <form method="post" action="#" id="#">
               <div className="form-group files">
-                <label>Upload Your File </label>
+                <label className="profile-label">Upload Your File </label>
                 <input
                   type="file"
                   className="form-control"
@@ -67,13 +72,13 @@ class Profile extends Component {
               </div>
             </form>
             <div class="form-group">
-              <Progress max="100" color="success" value={this.state.loaded}>
+              <Progress max="100" color="info" value={this.state.loaded}>
                 {Math.round(this.state.loaded, 2)}%
               </Progress>
             </div>
             <button
               type="button"
-              className="btn btn-success btn-block"
+              className="btn btn-info btn-block"
               onClick={this.onClickHandler}
             >
               Upload
