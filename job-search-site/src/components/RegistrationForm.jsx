@@ -32,14 +32,14 @@ const validationSchema = Yup.object().shape({
     .email("*Must be a valid email address")
     .max(100, "*Email must be less than 100 characters")
     .required("*Email is required"),
-  phone: Yup.string()
+  phoneNum: Yup.string()
     .matches(phoneRegExp, "*Phone number is not valid")
     .required("*Phone number required"),
 
 });
 
 const register = (json, completion) => {
-  http.post('/api/users/signup', json, {}).then(response => {
+  http.post('/api/users/signup', {data: json}).then(response => {
     console.log(response);
     completion();
   });
@@ -53,20 +53,20 @@ const RegistrationForm = (props) => {
       </Modal.Header>
       <Modal.Body>
         <Formik
-          initialValues={{ username: "", password: "", name: "", email: "", phone: ""}}
+          initialValues={{ username: "", password: "", name: "", email: "", phoneNum: ""}}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
-            register((values, null, 2), () => {
+            register(values, () => {
               
               console.log("Submitted successfully");
               props.handleModalOpen();
             });
-            // setTimeout(() => {
-            //   alert(JSON.stringify(values, null, 2));
-            //   resetForm();
-            //   setSubmitting(false);
-            // }, 500);
+            setTimeout(() => {
+              // alert(JSON.stringify(values, null, 2));
+              resetForm();
+              setSubmitting(false);
+            }, 500);
           }}
         >
           {({
@@ -143,15 +143,15 @@ const RegistrationForm = (props) => {
                 <Form.Label>Phone :</Form.Label>
                 <Form.Control
                   type="text"
-                  name="phone"
+                  name="phoneNum"
                   placeholder="Phone"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.phone}
-                  className={touched.phone && errors.phone ? "has-error" : null}
+                  value={values.phoneNum}
+                  className={touched.phoneNum && errors.phoneNum ? "has-error" : null}
                 />
-                {touched.phone && errors.phone ? (
-                  <div className="error-message">{errors.phone}</div>
+                {touched.phoneNum && errors.phoneNum ? (
+                  <div className="error-message">{errors.phoneNum}</div>
                 ) : null}
               </Form.Group>
 
