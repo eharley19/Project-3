@@ -7,6 +7,7 @@ import http from '../services/httpService';
 const loginUser = (json, completion) => {
   http.post('/api/users/login', {data: json}).then(response => {
     console.log(response);
+    localStorage.setItem("auth_token", response.data.token);
     completion();
   });
 }
