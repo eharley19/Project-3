@@ -7,7 +7,6 @@ import API from "../utils/API";
 
 import "./style.css";
 
-
 class Search extends Component {
   state = {
     jobs: [],
@@ -94,19 +93,13 @@ class Search extends Component {
                 <h1 className="heading-title mx-sm-3 mb-2"></h1>
                 <h2
                   className="heading-title mx-sm-7 mb-7"
-
                   className="mx-auto"
-
-                  class="mx-auto"
-
                   style={{
                     width: 500,
                     marginBottom: 35,
                     marginTop: 25,
 
-
                     color: "rgb(22, 17, 70)",
-
                   }}
                 >
                   Search and Help Fight COVID-19

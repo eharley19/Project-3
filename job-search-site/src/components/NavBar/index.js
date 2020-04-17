@@ -60,6 +60,12 @@ class NavBar extends Component {
                   Saved
                 </NavLink>
               </li>
+
+              <li className="nav-item">
+                <NavLink className="nav-link heading-titles" to="/profile">
+                  Profile
+                </NavLink>
+              </li>
             </ul>
           </div>
 

@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import { Route, Redirect, Switch } from "react-router-dom";
 import Search from "./pages/search";
 import Saved from "./pages/save";
+import Profile from "./pages/profile";
 import NotFound from "./pages/notFound";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
@@ -22,6 +23,7 @@ class App extends Component {
             <Switch>
               <Route path="/search" component={Search} />
               <Route path="/saved" component={Saved} />
+              <Route path="/profile" component={Profile} />
               <Route path="/not-found" component={NotFound} />
               <Redirect from="/" exact to="/search" />
               <Redirect to="/not-found" />
