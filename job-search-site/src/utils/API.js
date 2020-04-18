@@ -16,7 +16,7 @@ export default {
   },
   // Deletes the saved job with the given id
   deleteJob: function (id) {
-    return http.delete("/api/jobs/", id, {
+    return http.delete(`/api/jobs/${id}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
       },
