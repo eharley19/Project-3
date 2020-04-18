@@ -27,12 +27,12 @@ function SearchForm({
         />
       </div>
       <div className="form-group mx-sm-3">
-        <label htmlFor="Title" className="sr-only">
+        <label htmlFor="Location" className="sr-only">
           Search Location
         </label>
         <input
           className="form-control heading-subtitle"
-          id="Title"
+          id="Location"
           type="text"
           value={where}
           placeholder="Location..."

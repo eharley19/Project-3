@@ -26,7 +26,7 @@ class Profile extends Component {
     const data = new FormData();
     data.append("file", this.state.selectedFile);
     axios
-      .post("http://localhost:3001/upload", data, {
+      .post("http://localhost:8000/upload", data, {
         // receive two parameter endpoint url ,form data
         onUploadProgress: (ProgressEvent) => {
           this.setState({
@@ -82,7 +82,6 @@ class Profile extends Component {
     let files = event.target.files;
     let size = 1050000;
     let err = "";
-    console.log("File size is", files[0].size);
     if (files[0].size > size) {
       err += files[0].type + "is too large, please pick a smaller file\n";
     }
@@ -115,7 +114,7 @@ class Profile extends Component {
             <form method="post" action="#" id="#">
               <div className="form-group files">
                 <label className="profile-label">Upload Your File </label>
-                <small id="uploadHelp" class="form-text text-muted">
+                <small id="uploadHelp" className="form-text text-muted">
                   Please submit your resume as a Word document, a PDF file or a
                   TXT file under 1MB.
                 </small>
@@ -127,7 +126,7 @@ class Profile extends Component {
                 />
               </div>
             </form>
-            <div class="form-group">
+            <div className="form-group">
               <Progress
                 animated
                 max="100"
