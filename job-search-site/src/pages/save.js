@@ -78,7 +78,7 @@ class Saved extends Component {
                   <Job
                     key={job._id}
                     title={job.title}
-                    link={job.redirect_url}
+                    link={job.link}
                     company={job.company}
                     contract_time={job.contract_time}
                     location={job.location}
