@@ -25,6 +25,16 @@ class NavBar extends Component {
       };
     });
   };
+
+  handleModal2Close = () => {
+    localStorage.removeItem("auth_token");
+    this.setState((prevState) => {
+      return {
+        modal2Open: false,
+      };
+    });
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -60,19 +70,37 @@ class NavBar extends Component {
                   Saved
                 </NavLink>
               </li>
+              {localStorage.auth_token && (
+                <li className="nav-item">
+                  <NavLink className="nav-link heading-titles" to="/profile">
+                    Profile
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </div>
 
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <a
-                  onClick={this.handleModal2Open}
-                  className="nav-link heading-titles"
-                >
-                  Login
-                </a>
-              </li>
+              {localStorage.auth_token ? (
+                <li className="nav-item">
+                  <a
+                    onClick={this.handleModal2Close}
+                    className="nav-link heading-titles"
+                  >
+                    Logout
+                  </a>
+                </li>
+              ) : (
+                <li className="nav-item">
+                  <a
+                    onClick={this.handleModal2Open}
+                    className="nav-link heading-titles"
+                  >
+                    Login
+                  </a>
+                </li>
+              )}
               <li className="nav-item">
                 <a
                   onClick={this.handleModalOpen}
