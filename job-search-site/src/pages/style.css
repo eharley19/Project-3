@@ -5,6 +5,7 @@ h2 {
 h1.heading-title.mb-2,
 .darkmode--activated h1,
 .darkmode--activated h2,
+.darkmode--activated h6,
 .darkmode--activated div.media-content {
   color: rgb(208, 203, 139);
 }
@@ -15,7 +16,8 @@ h1.heading-title.mb-2,
 }
 
 .darkmode--activated button.heading-subtitle,
-.darkmode--activated input.form-control {
+.darkmode--activated input.form-control,
+.darkmode--activated div.progress {
   background-color: beige;
 }
 
@@ -24,14 +26,12 @@ h1.heading-title.mb-2,
   color: #2f4f4f;
 }
 
-.darkmode--activated div.modal-content,
-.darkmode--activated div.Toastify__toast {
+.darkmode--activated div.modal-content {
   background-color: rgb(22, 17, 70);
 }
 
 div.Toastify__toast {
-  background-color: rgb(208, 203, 139);
-  color: rgb(22, 17, 70);
+  background-color: #17a2b8;
 }
 
 .darkmode--activated div.modal-title,
@@ -46,6 +46,19 @@ div.Toastify__toast {
 
 button.btn.btn-primary {
   background-color: rgb(22, 17, 70);
+}
+
+button.btn.btn-info {
+  margin: 15px 0px;
+}
+
+h2.profile-title {
+  margin-top: 15px;
+}
+
+.darkmode--activated h5.profile-content,
+.darkmode--activated label.profile-label {
+  color: rgb(208, 203, 139);
 }
 
 nav.navbar {
