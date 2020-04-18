@@ -83,7 +83,6 @@ class Search extends Component {
         }
       });
     } else {
-      console.log("Open Sesame!");
       this.handleModal2Open();
     }
   };
