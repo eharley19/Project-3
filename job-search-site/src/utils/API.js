@@ -8,14 +8,26 @@ export default {
   },
   // Gets all saved jobs
   getSavedJobs: function () {
-    return http.get("/api/jobs", {headers: { Authorization: `Bearer ${localStorage.getItem("Auth_token")}`}});
+    return http.get("/api/jobs", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+      },
+    });
   },
   // Deletes the saved job with the given id
   deleteJob: function (id) {
-    return http.delete("/api/jobs/" + id);
+    return http.delete("/api/jobs/", id, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+      },
+    });
   },
   // Saves a job to the database
   saveJob: function (jobData) {
-    return http.post("/api/jobs", jobData, {headers: { Authorization: `Bearer ${localStorage.getItem("Auth_token")}`}});
+    return http.post("/api/jobs", jobData, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+      },
+    });
   },
 };
