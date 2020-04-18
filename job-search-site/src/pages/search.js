@@ -4,6 +4,7 @@ import Job from "../components/Job/index";
 import SearchForm from "../components/SearchForm/index";
 import { List } from "../components/List/index";
 import API from "../utils/API";
+import LoginModal from "../components/LoginModal";
 
 import "./style.css";
 
@@ -13,6 +14,7 @@ class Search extends Component {
     where: "",
     what: "",
     message: "Search for Jobs Above",
+    modal2Open: false,
   };
 
   handleInputChangeJob = (event) => {
@@ -54,23 +56,36 @@ class Search extends Component {
     this.getJobs();
   };
 
-  handleJobSave = (id) => {
-    const job = this.state.jobs.find((job) => job.id === id);
-    API.getSavedJobs().then((res) => {
-      const savedJobs = res.data;
-      if (savedJobs.find((jobSaved) => jobSaved.adzunaId === id)) {
-        alert("Job already Saved!");
-      } else {
-        API.saveJob({
-          adzunaId: job.id,
-          title: job.title,
-          location: job.location.display_name,
-          link: job.redirect_url,
-          description: job.description,
-          company: job.company.display_name,
-        }).then(() => this.getJobs());
-      }
+  handleModal2Open = () => {
+    this.setState((prevState) => {
+      return {
+        modal2Open: !prevState.modal2Open,
+      };
     });
+  };
+
+  handleJobSave = (id) => {
+    if (localStorage.auth_token) {
+      const job = this.state.jobs.find((job) => job.id === id);
+      API.getSavedJobs().then((res) => {
+        const savedJobs = res.data;
+        if (savedJobs.find((jobSaved) => jobSaved.adzunaId === id)) {
+          alert("Job already Saved!");
+        } else {
+          API.saveJob({
+            adzunaId: job.id,
+            title: job.title,
+            location: job.location.display_name,
+            link: job.redirect_url,
+            description: job.description,
+            company: job.company.display_name,
+          }).then(() => this.getJobs());
+        }
+      });
+    } else {
+      console.log("Open Sesame!");
+      this.handleModal2Open();
+    }
   };
 
   render() {
@@ -151,6 +166,10 @@ class Search extends Component {
             )}
           </div>
         </div>
+        <LoginModal
+          modalOpen={this.state.modal2Open}
+          handleModal2Open={this.handleModal2Open}
+        />
       </div>
     );
   }
