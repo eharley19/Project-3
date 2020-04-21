@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 8000;
 const cors = require("cors");
 const multer = require("multer");
 const app = express();
+const path = require("path");
 
 app.use(cors());
 
@@ -12,7 +13,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("job-search-site/build"));
+  app.use(express.static(path.join(__dirname, "job-search-site/build")));
+  app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "job-search-site/build", "index.html"));
+  });
 }
 
 app.use(routes);
