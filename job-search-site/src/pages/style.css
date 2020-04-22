@@ -70,3 +70,8 @@ button.navbar-toggle {
   top: 50%;
   left: 50%;
 }
+
+button:hover,
+a.btn:hover {
+  background-color: beige;
+}

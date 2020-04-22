@@ -70,7 +70,7 @@ class Search extends Component {
       API.getSavedJobs().then((res) => {
         const savedJobs = res.data;
         if (savedJobs.find((jobSaved) => jobSaved.adzunaId === id)) {
-          alert("Job already Saved!");
+          toast.info("Job already saved!");
         } else {
           API.saveJob({
             adzunaId: job.id,
@@ -79,7 +79,10 @@ class Search extends Component {
             link: job.redirect_url,
             description: job.description,
             company: job.company.display_name,
-          }).then(() => this.getJobs());
+          }).then(() => {
+            this.getJobs();
+            toast.info("Successfully saved 1 job!");
+          });
         }
       });
     } else {
